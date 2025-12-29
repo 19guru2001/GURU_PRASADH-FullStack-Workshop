@@ -1,0 +1,331 @@
+Challenge 1: Interactive Counter
+counter.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter</title>
+<style>
+#counter { font-size: 2rem; margin-bottom: 10px; }
+button { margin: 5px; padding: 10px; }
+.step-btn { margin: 2px; }
+</style>
+</head>
+<body>
+<div id="counter">0</div>
+<button id="decrement">-</button>
+<button id="reset">Reset</button>
+<button id="increment">+</button>
+<div>
+Step:
+<button class="step-btn" data-step="1">1</button>
+<button class="step-btn" data-step="5">5</button>
+<button class="step-btn" data-step="10">10</button>
+</div>
+<script src="counter.js"></script>
+</body>
+</html>
+
+counter.js
+let count = 0
+let step = 1
+const counter = document.getElementById('counter')
+const inc = document.getElementById('increment')
+const dec = document.getElementById('decrement')
+const reset = document.getElementById('reset')
+const steps = document.querySelectorAll('.step-btn')
+
+function render() {
+    counter.textContent = count
+    counter.style.color = count>0?'green':count<0?'red':'black'
+}
+
+inc.addEventListener('click', () => { count += step; render() })
+dec.addEventListener('click', () => { count = Math.max(0,count-step); render() })
+reset.addEventListener('click', () => { count = 0; render() })
+steps.forEach(b=>b.addEventListener('click', ()=>{ step=+b.dataset.step }))
+
+render()
+
+Challenge 2: Dynamic Form Validator
+form-validator.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validator</title>
+<style>
+input { display: block; margin: 10px 0; padding: 5px; }
+.error { color: red; font-size: 0.9rem; }
+.valid { color: green; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<form id="regForm">
+<input type="text" id="username" placeholder="Username">
+<div id="usernameError" class="error"></div>
+<input type="email" id="email" placeholder="Email">
+<div id="emailError" class="error"></div>
+<input type="password" id="password" placeholder="Password">
+<div id="passwordError" class="error"></div>
+<input type="password" id="confirm" placeholder="Confirm Password">
+<div id="confirmError" class="error"></div>
+<button id="submitBtn" disabled>Submit</button>
+</form>
+<script src="form-validator.js"></script>
+</body>
+</html>
+
+form-validator.js
+const username = document.getElementById('username')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+const confirmPass = document.getElementById('confirm')
+const submitBtn = document.getElementById('submitBtn')
+
+const usernameError = document.getElementById('usernameError')
+const emailError = document.getElementById('emailError')
+const passwordError = document.getElementById('passwordError')
+const confirmError = document.getElementById('confirmError')
+
+function validateUsername() {
+    const val = username.value
+    if(!/^[a-zA-Z0-9]{3,15}$/.test(val)){ usernameError.textContent='Invalid'; return false }
+    usernameError.textContent='✓'; return true
+}
+
+function validateEmail() {
+    const val = email.value
+    if(!/^\S+@\S+\.\S+$/.test(val)){ emailError.textContent='Invalid'; return false }
+    emailError.textContent='✓'; return true
+}
+
+function validatePassword() {
+    const val = password.value
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/
+    if(!regex.test(val)){ passwordError.textContent='Invalid'; return false }
+    passwordError.textContent='✓'; return true
+}
+
+function validateConfirm() {
+    if(confirmPass.value !== password.value){ confirmError.textContent='Mismatch'; return false }
+    confirmError.textContent='✓'; return true
+}
+
+function checkForm() {
+    submitBtn.disabled = !(validateUsername() && validateEmail() && validatePassword() && validateConfirm())
+}
+
+username.addEventListener('blur', ()=>{ validateUsername(); checkForm() })
+email.addEventListener('blur', ()=>{ validateEmail(); checkForm() })
+password.addEventListener('blur', ()=>{ validatePassword(); checkForm() })
+confirmPass.addEventListener('blur', ()=>{ validateConfirm(); checkForm() })
+
+document.getElementById('regForm').addEventListener('submit', e=>e.preventDefault())
+
+Challenge 3: Todo List with Categories
+todo.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo List</title>
+<style>
+body { font-family: Arial; padding: 50px; }
+#todoForm { display: flex; gap: 10px; margin-bottom: 20px; }
+#todoInput { flex: 1; padding: 10px; }
+button { padding: 10px; cursor: pointer; }
+#filters { margin-bottom: 10px; }
+li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+li span { cursor: pointer; }
+.completed { text-decoration: line-through; color: gray; }
+</style>
+</head>
+<body>
+<div>
+<form id="todoForm">
+<input type="text" id="todoInput" placeholder="Add task">
+<select id="category">
+<option value="Work">Work</option>
+<option value="Personal">Personal</option>
+</select>
+<button type="submit">Add</button>
+</form>
+<div id="filters">
+Filter:
+<button data-filter="All">All</button>
+<button data-filter="Work">Work</button>
+<button data-filter="Personal">Personal</button>
+</div>
+<ul id="todoList"></ul>
+<div id="counts"></div>
+</div>
+<script src="todo.js"></script>
+</body>
+</html>
+
+todo.js
+const form = document.getElementById('todoForm')
+const input = document.getElementById('todoInput')
+const categorySelect = document.getElementById('category')
+const list = document.getElementById('todoList')
+const filters = document.querySelectorAll('#filters button')
+const counts = document.getElementById('counts')
+let todos = JSON.parse(localStorage.getItem('todos'))||[]
+function save(){ localStorage.setItem('todos',JSON.stringify(todos)) }
+function render(filter='All'){
+list.innerHTML=''
+let filtered=todos.filter(t=>filter==='All'||t.category===filter)
+filtered.forEach((t,i)=>{
+const li=document.createElement('li')
+const text=document.createElement('span')
+text.textContent=t.text+' ['+t.category+']'
+if(t.completed) text.classList.add('completed')
+text.addEventListener('click',()=>{ t.completed=!t.completed; save(); render(filter) })
+const del=document.createElement('span')
+del.textContent='X'
+del.style.color='red'
+del.addEventListener('click',()=>{ todos.splice(i,1); save(); render(filter) })
+li.appendChild(text)
+li.appendChild(del)
+list.appendChild(li)
+})
+const workCount=todos.filter(t=>t.category==='Work').length
+const personalCount=todos.filter(t=>t.category==='Personal').length
+counts.textContent=`Work: ${workCount}, Personal: ${personalCount}, Total: ${todos.length}`
+}
+form.addEventListener('submit',e=>{ e.preventDefault(); if(input.value.trim()==='') return; todos.push({text:input.value,category:categorySelect.value,completed:false}); input.value=''; save(); render() })
+filters.forEach(btn=>btn.addEventListener('click',()=>render(btn.dataset.filter)))
+render()
+
+Challenge 4: Tab Component
+tabs.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabs</title>
+<style>
+.tab { display: inline-block; padding: 10px 20px; cursor: pointer; border: 1px solid #ccc; }
+.tab.active { background: #007BFF; color: #fff; }
+#content { border: 1px solid #ccc; padding: 20px; margin-top: -1px; }
+</style>
+</head>
+<body>
+<div id="tabs"></div>
+<div id="content"></div>
+<script src="tabs.js"></script>
+</body>
+</html>
+
+tabs.js
+const tabsData=[
+{ title:'Overview', content:'Overview content here...' },
+{ title:'Features', content:'Features content here...' },
+{ title:'Pricing', content:'Pricing content here...' }
+]
+const tabsContainer=document.getElementById('tabs')
+const contentContainer=document.getElementById('content')
+let activeIndex=0
+function renderTabs(){
+tabsContainer.innerHTML=''
+tabsData.forEach((tab,i)=>{
+const div=document.createElement('div')
+div.textContent=tab.title
+div.className='tab'+(i===activeIndex?' active':'')
+div.addEventListener('click',()=>{ activeIndex=i; renderTabs() })
+tabsContainer.appendChild(div)
+})
+contentContainer.textContent=tabsData[activeIndex].content
+}
+renderTabs()
+
+Challenge 5: Modal Component
+modal.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal</title>
+<style>
+.modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; }
+.modal { background:#fff; padding:20px; border-radius:5px; min-width:300px; position:relative; transition: all 0.3s ease; }
+.modal.open { transform: scale(1); opacity:1; }
+.modal.closed { transform: scale(0.7); opacity:0; }
+.close-btn { position:absolute; top:5px; right:10px; cursor:pointer; }
+button { margin:5px; }
+</style>
+</head>
+<body>
+<button id="openModal">Open Modal</button>
+<div class="modal-overlay" id="overlay"></div>
+<script src="modal.js"></script>
+</body>
+</html>
+
+modal.js
+function createModal({title,content,buttons}){
+const overlay=document.getElementById('overlay')
+const modal=document.createElement('div')
+modal.className='modal closed'
+modal.innerHTML=`<h2>${title}</h2><div>${content}</div>`
+buttons.forEach(b=>{
+const btn=document.createElement('button')
+btn.textContent=b.text
+btn.addEventListener('click',()=>{ b.onClick(modal,overlay) })
+btn.style.background=b.type==='danger'?'red':b.type==='secondary'?'gray':'blue'
+btn.style.color='white'
+modal.appendChild(btn)
+})
+overlay.appendChild(modal)
+overlay.addEventListener('click',e=>{ if(e.target===overlay) closeModal(modal,overlay) })
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(modal,overlay) })
+return { open: ()=>{ overlay.style.display='flex'; modal.className='modal open' }, close: ()=>closeModal(modal,overlay) }
+}
+function closeModal(modal,overlay){ modal.className='modal closed'; setTimeout(()=>overlay.style.display='none',300) }
+document.getElementById('openModal').addEventListener('click',()=>{
+const modal=createModal({title:'Confirm Delete',content:'Are you sure?',buttons:[{text:'Cancel',type:'secondary',onClick:closeModal},{text:'Delete',type:'danger',onClick:(m,o)=>{ console.log('Deleted'); closeModal(m,o) }}]})
+modal.open()
+})
+
+Challenge 6: Accordion Component
+accordion.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accordion</title>
+<style>
+.section { border:1px solid #ccc; margin-bottom:5px; }
+.header { cursor:pointer; padding:10px; background:#eee; display:flex; justify-content:space-between; }
+.content { max-height:0; overflow:hidden; transition:max-height 0.3s ease; padding:0 10px; }
+.header.open .arrow { transform:rotate(90deg); }
+</style>
+</head>
+<body>
+<div id="accordion"></div>
+<script src="accordion.js"></script>
+</body>
+</html>
+
+accordion.js
+const accordionData=[{title:'What is JavaScript?',content:'...'},
+{title:'What is the DOM?',content:'...'},
+{title:'What are events?',content:'...'}]
+const container=document.getElementById('accordion')
+accordionData.forEach(d=>{
+const section=document.createElement('div'); section.className='section'
+const header=document.createElement('div'); header.className='header'
+header.innerHTML=`<span>${d.title}</span><span class="arrow">▶</span>`
+const content=document.createElement('div'); content.className='content'; content.textContent=d.content
+header.addEventListener('click',()=>{ const open=header.classList.toggle('open'); content.style.maxHeight=open?content.scrollHeight+'px':'0' })
+section.appendChild(header); section.appendChild(content); container.appendChild(section)
+})
+

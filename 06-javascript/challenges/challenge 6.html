@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accordion</title>
+<style>
+.section { border:1px solid #ccc; margin-bottom:5px; }
+.header { cursor:pointer; padding:10px; background:#eee; display:flex; justify-content:space-between; }
+.content { max-height:0; overflow:hidden; transition:max-height 0.3s ease; padding:0 10px; }
+.header.open .arrow { transform:rotate(90deg); }
+</style>
+</head>
+<body>
+<div id="accordion"></div>
+<script src="accordion.js">const accordionData=[{title:'What is JavaScript?',content:'...'},
+{title:'What is the DOM?',content:'...'},
+{title:'What are events?',content:'...'}]
+const container=document.getElementById('accordion')
+accordionData.forEach(d=>{
+const section=document.createElement('div'); section.className='section'
+const header=document.createElement('div'); header.className='header'
+header.innerHTML=`<span>${d.title}</span><span class="arrow">▶</span>`
+const content=document.createElement('div'); content.className='content'; content.textContent=d.content
+header.addEventListener('click',()=>{ const open=header.classList.toggle('open'); content.style.maxHeight=open?content.scrollHeight+'px':'0' })
+section.appendChild(header); section.appendChild(content); container.appendChild(section)
+})</script>
+</body>
+</html>
+
+
+

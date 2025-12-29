@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guruprasadh | Portfolio</title>
+
+    <!-- ===== Embedded CSS ===== -->
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(to right, var(--primary-color), #6fb1fc);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background-color: var(--secondary-color);
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .about-content img {
+            width: 150px;
+            height: 190px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .skills li {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project {
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: #eef3f8;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Contact Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>GURU PRASADH S</h1>
+    <p>Electronics & Communication Engineer</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<main class="container">
+
+    <!-- About -->
+    <section id="about" class="card">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="GURUPRASADH PP SIZE.jpg" alt="Profile Picture">
+            <p>
+                I am S. Guruprasadh, a BE graduate in Electronics and Communication Engineering
+                from Rajalakshmi Engineering College with a CGPA of 7.98.
+                I have experience in IoT, embedded systems, and Python through projects
+                and an internship at NSIC.
+            </p>
+        </div>
+
+        <h3>Skills</h3>
+        <ul class="skills">
+            <li>C</li>
+            <li>Java</li>
+            <li>Python</li>
+            <li>SQL</li>
+        </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card">
+        <h2>Projects</h2>
+
+        <div class="project-grid">
+            <div class="project">
+                <h4>RFID Attendance System</h4>
+                <p>Arduino-based attendance tracking using RFID technology.</p>
+            </div>
+
+            <div class="project">
+                <h4>Smart Dustbin</h4>
+                <p>IoT-enabled dustbin with sensors and automatic lid control.</p>
+            </div>
+
+            <div class="project">
+                <h4>Mineral Mapping</h4>
+                <p>Python-based mineral identification using spectral reflectance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+        <h2>Contact Me</h2>
+
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email ID" required>
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2025 Guru Prasadh</p>
+</footer>
+
+</body>
+</html>

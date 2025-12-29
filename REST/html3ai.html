@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Satisfaction Survey</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        small {
+            color: #555;
+        }
+        .inline label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+        .form-actions {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Customer Satisfaction Survey</h1>
+
+<form action="#" method="POST" autocomplete="on">
+
+    <!-- ===================== Section 1 ===================== -->
+    <fieldset>
+        <legend>Personal Information</legend>
+
+        <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="fullname"
+                   required minlength="2" maxlength="100"
+                   placeholder="Enter your full name"
+                   autofocus
+                   aria-required="true"
+                   aria-describedby="name-help">
+            <small id="name-help">Minimum 2 characters</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email"
+                   required
+                   placeholder="example@email.com"
+                   autocomplete="email"
+                   aria-required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="9876543210"
+                   pattern="[0-9]{10}"
+                   aria-describedby="phone-help">
+            <small id="phone-help">Enter 10 digit number</small>
+        </div>
+
+        <div class="form-group">
+            <label for="age-range">Age Range</label>
+            <select id="age-range" name="age-range">
+                <option value="">-- Select --</option>
+                <option value="under-18">Under 18</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55-plus">55+</option>
+            </select>
+        </div>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <div class="inline" role="radiogroup" aria-required="true">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="none"> Prefer not to say</label>
+            </div>
+        </fieldset>
+    </fieldset>
+
+    <!-- ===================== Section 2 ===================== -->
+    <fieldset>
+        <legend>Product Feedback</legend>
+
+        <fieldset>
+            <legend>Products Used (Select all that apply)</legend>
+            <label><input type="checkbox" name="products[]" value="web"> Product A – Web Application</label>
+            <label><input type="checkbox" name="products[]" value="mobile"> Product B – Mobile App</label>
+            <label><input type="checkbox" name="products[]" value="desktop"> Product C – Desktop Software</label>
+            <label><input type="checkbox" name="products[]" value="api"> Product D – API Services</label>
+            <label><input type="checkbox" name="products[]" value="cloud"> Product E – Cloud Storage</label>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="primary-product">Primary Product</label>
+            <select id="primary-product" name="primary-product">
+                <optgroup label="Applications">
+                    <option value="web">Web Application</option>
+                    <option value="mobile">Mobile App</option>
+                    <option value="desktop">Desktop Software</option>
+                </optgroup>
+                <optgroup label="Services">
+                    <option value="api">API Services</option>
+                    <option value="cloud">Cloud Storage</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="duration">How long have you been a customer?</label>
+            <select id="duration" name="duration">
+                <option value="lt1">Less than 1 month</option>
+                <option value="1-6">1–6 months</option>
+                <option value="6-12">6–12 months</option>
+                <option value="1-2">1–2 years</option>
+                <option value="gt2">More than 2 years</option>
+            </select>
+        </div>
+    </fieldset>
+
+    <!-- ===================== Section 3 ===================== -->
+    <fieldset>
+        <legend>Satisfaction Rating</legend>
+
+        <fieldset>
+            <legend>Overall Satisfaction</legend>
+            <div class="inline">
+                <label><input type="radio" name="overall" value="1"> 1</label>
+                <label><input type="radio" name="overall" value="2"> 2</label>
+                <label><input type="radio" name="overall" value="3"> 3</label>
+                <label><input type="radio" name="overall" value="4"> 4</label>
+                <label><input type="radio" name="overall" value="5"> 5</label>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="quality">Product Quality:
+                <output id="quality-output">5</output>/10
+            </label>
+            <input type="range" id="quality" name="quality"
+                   min="1" max="10" value="5"
+                   oninput="qualityOutput.value = this.value">
+        </div>
+
+        <div class="form-group">
+            <label for="support">Customer Support:
+                <output id="support-output">5</output>/10
+            </label>
+            <input type="range" id="support" name="support"
+                   min="1" max="10" value="5"
+                   oninput="supportOutput.value = this.value">
+        </div>
+
+        <div class="form-group">
+            <label for="value">Value for Money:
+                <output id="value-output">5</output>/10
+            </label>
+            <input type="range" id="value" name="value"
+                   min="1" max="10" value="5"
+                   oninput="valueOutput.value = this.value">
+        </div>
+
+        <fieldset>
+            <legend>Would you recommend us?</legend>
+            <label><input type="radio" name="recommend" value="definitely"> Definitely</label>
+            <label><input type="radio" name="recommend" value="probably"> Probably</label>
+            <label><input type="radio" name="recommend" value="not-sure"> Not sure</label>
+            <label><input type="radio" name="recommend" value="probably-not"> Probably not</label>
+            <label><input type="radio" name="recommend" value="definitely-not"> Definitely not</label>
+        </fieldset>
+    </fieldset>
+
+    <!-- ===================== Section 4 ===================== -->
+    <fieldset>
+        <legend>Detailed Feedback</legend>
+
+        <div class="form-group">
+            <label for="like">What do you like most?</label>
+            <textarea id="like" name="like"
+                      rows="4" maxlength="500"
+                      placeholder="Your positive feedback"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="improve">What can we improve?</label>
+            <textarea id="improve" name="improve"
+                      rows="4" maxlength="500"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments"
+                      rows="6" maxlength="1000"></textarea>
+        </div>
+    </fieldset>
+
+    <!-- ===================== Section 5 ===================== -->
+    <fieldset>
+        <legend>Contact Preferences</legend>
+
+        <fieldset>
+            <legend>Preferred Contact Method</legend>
+            <label><input type="checkbox" name="contact[]" value="email"> Email</label>
+            <label><input type="checkbox" name="contact[]" value="phone"> Phone</label>
+            <label><input type="checkbox" name="contact[]" value="sms"> SMS</label>
+            <label><input type="checkbox" name="contact[]" value="none"> No Contact</label>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="time">Best Time to Contact</label>
+            <select id="time" name="time[]" multiple>
+                <option value="morning">Morning (9am–12pm)</option>
+                <option value="afternoon">Afternoon (12pm–5pm)</option>
+                <option value="evening">Evening (5pm–8pm)</option>
+            </select>
+        </div>
+
+        <label>
+            <input type="checkbox" name="newsletter"> Subscribe to Newsletter
+        </label>
+
+        <label>
+            <input type="checkbox" name="terms" required aria-required="true">
+            I agree to the Terms and Conditions *
+        </label>
+    </fieldset>
+
+    <!-- ===================== Buttons ===================== -->
+    <div class="form-actions">
+        <button type="submit">Submit Survey</button>
+        <button type="reset">Clear Form</button>
+    </div>
+
+</form>
+
+</body>
+</html>

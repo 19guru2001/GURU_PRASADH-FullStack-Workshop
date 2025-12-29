@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Objects</h1>
+<h2>Object Destructuring</h2>
+
+<p id="demo"></p>
+
+<script>
+
+function createPipeline(...operations) {
+    return function(data) {
+        return operations.reduce((result, operation) => operation(result), data);
+    };
+}
+
+const products = [
+    { name: 'Blender', price: 30, inStock: true },
+    { name: 'Headphones', price: 20, inStock: true },
+    { name: 'Bookshelf', price: 25, inStock: true },
+    { name: 'Laptop', price: 800, inStock: false },
+    { name: 'Desk', price: 100, inStock: true },
+    { name: 'Chair', price: 50, inStock: false },
+];
+
+const filterInStock = products => products.filter(p => p.inStock);
+const sortByPrice = products => [...products].sort((a, b) => a.price - b.price);
+const getNames = products => products.map(p => p.name);
+const takeFirst = n => items => items.slice(0, n);
+
+
+const getTopCheapestInStock = createPipeline(
+    filterInStock,
+    sortByPrice,
+    takeFirst(3),
+    getNames
+);
+
+
+console.log(getTopCheapestInStock(products));
+
+
+</script>
+
+</body>
+</html>

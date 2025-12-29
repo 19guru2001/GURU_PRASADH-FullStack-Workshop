@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript Practice</h1>
+
+    <script>
+      let score = 0;
+
+let q1 = prompt("1. What is 5 + 3?");
+if (q1 === "8") {
+  score++;
+}
+
+let q2 = prompt("2. What is the capital of France?");
+if (q2.toLowerCase() === "paris") {
+  score++;
+}
+
+let q3 = prompt("3. What color is the sky?");
+if (q3.toLowerCase() === "blue") {
+  score++;
+}
+
+alert("Quiz completed!\nYour final score is: " + score + " / 3");
+console.log("Final Score:", score, "/ 3");
+        
+    </script>
+</body>
+</html>

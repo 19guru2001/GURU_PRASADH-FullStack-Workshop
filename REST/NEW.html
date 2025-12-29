@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Guruprasadh</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-success" href="#">GURU</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="pt-5 mt-5">
+    <div class="container">
+        <div class="card bg-success-subtle border-0 shadow-lg p-5 text-center">
+            <h1 class="display-5 fw-bold text-success">S. Guruprasadh</h1>
+            <p class="fs-5 text-secondary">
+                Software & Electronics Engineering Graduate
+            </p>
+            <div class="mt-3">
+                <a href="#projects" class="btn btn-success btn-lg me-2">My Projects</a>
+                <a href="#contact" class="btn btn-outline-success btn-lg">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="py-5 bg-body-tertiary">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">About Me</h2>
+
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-5 col-md-6">
+                <img src="images/profile.jpg" class="img-fluid rounded-4 shadow" alt="Profile">
+            </div>
+
+            <div class="col-lg-7 col-md-6">
+                <p class="fs-6">
+                    I am an Electronics and Communication Engineering graduate passionate about
+                    web development, software engineering, and embedded systems.
+                </p>
+
+                <div class="row mt-3">
+                    <div class="col-sm-6 mb-2">
+                        <span class="badge bg-success">HTML</span>
+                        <span class="badge bg-success">CSS</span>
+                        <span class="badge bg-success">Bootstrap</span>
+                    </div>
+                    <div class="col-sm-6 mb-2">
+                        <span class="badge bg-secondary">Python</span>
+                        <span class="badge bg-secondary">JavaScript</span>
+                        <span class="badge bg-secondary">IoT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Projects</h2>
+
+        <div class="row g-4">
+            <!-- Project -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project1.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Smart Dustbin</h5>
+                        <p class="card-text">Automated waste management using Arduino.</p>
+                        <span class="badge bg-success">Arduino</span>
+                        <span class="badge bg-info">Sensors</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate cards (2–6) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project2.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Mineral Mapping</h5>
+                        <p>Spectral reflectance-based material detection.</p>
+                        <span class="badge bg-warning text-dark">Python</span>
+                        <span class="badge bg-dark">DIP</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project3.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Portfolio Website</h5>
+                        <p>Responsive portfolio using Bootstrap.</p>
+                        <span class="badge bg-primary">Bootstrap</span>
+                        <span class="badge bg-secondary">UI</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project4.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Log Analyzer</h5>
+                        <p>Shell script for system log analysis.</p>
+                        <span class="badge bg-dark">Shell</span>
+                        <span class="badge bg-success">Linux</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project5.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Product Card UI</h5>
+                        <p>Modern responsive UI card design.</p>
+                        <span class="badge bg-info">CSS</span>
+                        <span class="badge bg-secondary">Flexbox</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 border-0">
+                    <img src="images/project6.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>HTML Tables</h5>
+                        <p>Accessible and responsive tables.</p>
+                        <span class="badge bg-primary">HTML</span>
+                        <span class="badge bg-warning text-dark">A11y</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-success w-100">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-5 bg-success-subtle">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Contact</h2>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <form class="needs-validation" novalidate>
+                    <input class="form-control mb-3" type="text" placeholder="Name" required>
+                    <input class="form-control mb-3" type="email" placeholder="Email" required>
+                    <textarea class="form-control mb-3" rows="4" placeholder="Message" required></textarea>
+                    <button class="btn btn-success w-100">Send Message</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-4">
+                    <p><i class="bi bi-envelope"></i> guru@example.com</p>
+                    <p><i class="bi bi-geo-alt"></i> Chennai, India</p>
+                    <p><i class="bi bi-phone"></i> +91 XXXXX XXXXX</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-success text-white py-3">
+    <div class="container text-center">
+        <p class="mb-1">© 2025 Guruprasadh</p>
+        <div>
+            <i class="bi bi-github me-3"></i>
+            <i class="bi bi-linkedin me-3"></i>
+            <i class="bi bi-twitter"></i>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

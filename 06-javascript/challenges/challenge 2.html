@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validator</title>
+<style>
+input { display: block; margin: 10px 0; padding: 5px; }
+.error { color: red; font-size: 0.9rem; }
+.valid { color: green; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<form id="regForm">
+<input type="text" id="username" placeholder="Username">
+<div id="usernameError" class="error"></div>
+<input type="email" id="email" placeholder="Email">
+<div id="emailError" class="error"></div>
+<input type="password" id="password" placeholder="Password">
+<div id="passwordError" class="error"></div>
+<input type="password" id="confirm" placeholder="Confirm Password">
+<div id="confirmError" class="error"></div>
+<button id="submitBtn" disabled>Submit</button>
+</form>
+<script src="form-validator.js">const username = document.getElementById('username')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+const confirmPass = document.getElementById('confirm')
+const submitBtn = document.getElementById('submitBtn')
+
+const usernameError = document.getElementById('usernameError')
+const emailError = document.getElementById('emailError')
+const passwordError = document.getElementById('passwordError')
+const confirmError = document.getElementById('confirmError')
+
+function validateUsername() {
+    const val = username.value
+    if(!/^[a-zA-Z0-9]{3,15}$/.test(val)){ usernameError.textContent='Invalid'; return false }
+    usernameError.textContent='✓'; return true
+}
+
+function validateEmail() {
+    const val = email.value
+    if(!/^\S+@\S+\.\S+$/.test(val)){ emailError.textContent='Invalid'; return false }
+    emailError.textContent='✓'; return true
+}
+
+function validatePassword() {
+    const val = password.value
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/
+    if(!regex.test(val)){ passwordError.textContent='Invalid'; return false }
+    passwordError.textContent='✓'; return true
+}
+
+function validateConfirm() {
+    if(confirmPass.value !== password.value){ confirmError.textContent='Mismatch'; return false }
+    confirmError.textContent='✓'; return true
+}
+
+function checkForm() {
+    submitBtn.disabled = !(validateUsername() && validateEmail() && validatePassword() && validateConfirm())
+}
+
+username.addEventListener('blur', ()=>{ validateUsername(); checkForm() })
+email.addEventListener('blur', ()=>{ validateEmail(); checkForm() })
+password.addEventListener('blur', ()=>{ validatePassword(); checkForm() })
+confirmPass.addEventListener('blur', ()=>{ validateConfirm(); checkForm() })
+
+document.getElementById('regForm').addEventListener('submit', e=>e.preventDefault())</script>
+</body>
+</html>
+

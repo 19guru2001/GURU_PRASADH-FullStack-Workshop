@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Objects</h1>
+<h2>Object Destructuring</h2>
+
+<p id="demo"></p>
+
+<script>
+const memoize = (fn) => {
+    const cache = new Map();
+
+    return function (...args) {
+        const key = JSON.stringify(args);
+
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+
+        const result = fn.apply(this, args);
+        cache.set(key, result);
+        return result;
+    };
+};
+
+const expensiveOperation = (n) => {
+    console.log('Computing...');
+    let result = 0;
+    for (let i = 0; i < n * 1000000; i++) {
+        result += i;
+    }
+    return result;
+};
+
+const memoizedOperation = memoize(expensiveOperation);
+
+console.log(memoizedOperation(5));   
+console.log(memoizedOperation(5));   
+console.log(memoizedOperation(10));  
+console.log(memoizedOperation(10)); 
+
+
+
+
+</script>
+
+</body>
+</html>

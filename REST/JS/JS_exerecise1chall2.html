@@ -1,0 +1,38 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript Practice</h1>
+
+    <script>
+      let choice = prompt(
+  "Choose conversion type:\n1. Celsius to Fahrenheit\n2. Fahrenheit to Celsius"
+);
+
+let temperature = parseFloat(prompt("Enter the temperature value:"));
+
+let result;
+
+if (choice === "1") {
+  // F = (C × 9/5) + 32
+  result = (temperature * 9 / 5) + 32;
+  alert(`${temperature}°C = ${result.toFixed(2)}°F`);
+  console.log(`${temperature}°C = ${result.toFixed(2)}°F`);
+} 
+else if (choice === "2") {
+  // C = (F − 32) × 5/9
+  result = (temperature - 32) * 5 / 9;
+  alert(`${temperature}°F = ${result.toFixed(2)}°C`);
+  console.log(`${temperature}°F = ${result.toFixed(2)}°C`);
+} 
+else {
+  alert("Invalid choice! Please select 1 or 2.");
+}
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Objects</h1>
+<h2>Object Destructuring</h2>
+
+<p id="demo"></p>
+
+<script>
+
+
+function myMap(arr, callback) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(callback(arr[i], i, arr));
+    }
+    return result;
+}
+
+
+function myFilter(arr, callback) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr)) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
+
+
+function myReduce(arr, callback, initialValue) {
+    let accumulator = initialValue;
+    for (let i = 0; i < arr.length; i++) {
+        accumulator = callback(accumulator, arr[i], i, arr);
+    }
+    return accumulator;
+}
+console.log(myMap([1, 2, 3], x => x * 2));         
+console.log(myFilter([1, 2, 3, 4], x => x > 2));   
+console.log(myReduce([1, 2, 3, 4], (acc, x) => acc + x, 0)); 
+
+</script>
+
+</body>
+</html>

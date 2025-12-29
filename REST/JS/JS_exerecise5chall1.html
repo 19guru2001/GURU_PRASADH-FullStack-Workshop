@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Objects</h1>
+<h2>Object Destructuring</h2>
+
+<p id="demo"></p>
+
+<script>
+
+function once(fn) {
+    let hasRun = false;
+    let cachedResult;
+
+    return function () {
+        if (!hasRun) {
+            cachedResult = fn();
+            hasRun = true;
+        }
+        return cachedResult;
+    };
+}
+
+const initialize = once(() => {
+    console.log('Initializing...');
+    return 'Initialized';
+});
+
+console.log(initialize());
+console.log(initialize());
+console.log(initialize());
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Objects</h1>
+<h2>Object Destructuring</h2>
+
+<p id="demo"></p>
+
+<script>
+// String to Number
+let str1 = "123";
+let num1 = Number(str1);
+console.log(num1);
+
+
+let str2 = "45.67";
+let num2 = parseFloat(str2);// Convert str2 to float
+console.log(num2);
+
+let str3 = "abc";
+let num3 = Number(str3);
+console.log(num3);// Convert str3 to number - what happens?
+
+// Number to String
+let age = 25;
+let ageStr1 = age.toString();
+let ageStr2 = String(age);
+console.log(ageStr1);
+console.log(ageStr2);// Convert age to string (2 different ways)
+
+// To Boolean
+let val1 = 0;
+let val2 = "";
+let val3 = "hello";
+let val4 = null;
+
+let bool1=Boolean(val1);
+let bool2=Boolean(val2);
+let bool3=Boolean(val3);
+let bool4=Boolean(val4);
+
+console.log(bool1);
+console.log(bool2);
+console.log(bool3);
+console.log(bool4);
+ 
+</script>
+
+</body>
+</html>
