@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .box {
+            background: white;
+            width: 400px;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        input, select, button {
+            padding: 6px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px;
+            border-bottom: 1px solid #ddd;
+        }
+        li.done span {
+            text-decoration: line-through;
+            color: gray;
+        }
+        li:hover .remove {
+            display: inline;
+        }
+        .remove {
+            color: red;
+            cursor: pointer;
+            display: none;
+        }
+        .filters button {
+            margin-right: 5px;
+        }
+        .count {
+            font-size: 13px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="row">
+        <input type="text" id="taskInput" placeholder="Add Task">
+        <button id="addBtn">Add</button>
+    </div>
+
+    <div class="row">
+        <select id="categorySelect">
+            <option>Work</option>
+            <option>Personal</option>
+        </select>
+    </div>
+
+    <div class="filters row">
+        <button data-filter="All">All</button>
+        <button data-filter="Work">Work</button>
+        <button data-filter="Personal">Personal</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <div class="count" id="taskCount"></div>
+</div>
+
+<script src="todo.js"></script>
+</body>
+</html>
