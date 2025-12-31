@@ -1,15 +1,27 @@
 # Review: 07-bootstrap
 
 **Exercise:**  Exercise: Build a Responsive Dashboard Layout
-**Review Date:** 2025-12-31 09:43
+**Review Date:** 2025-12-31 10:59
 
 ---
 
 ## Status: ✅ Submitted
 
-**Files submitted:** 1
+**Files submitted:** 0
 
-### Code Review
+### Relevance Check
+
+❌ **Submission does NOT match exercise requirements**
+   Expected keywords: dashboard container row col navbar
+   None of the expected keywords found in submission
+   **Please review the exercise requirements and resubmit**
+
+### ⚠️ Review Skipped
+
+The submission does not appear to match the exercise requirements.
+Please complete the correct exercise and resubmit.
+
+### Topic Score: 0 / 100 (0%)
 
 ---
 
