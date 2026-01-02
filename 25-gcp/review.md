@@ -1,7 +1,7 @@
 # Review: 25-gcp
 
 **Exercise:**  Exercise: Deploy Application to Google Cloud Platform
-**Review Date:** 2025-12-31 10:59
+**Review Date:** 2026-01-02 14:01
 
 ---
 
