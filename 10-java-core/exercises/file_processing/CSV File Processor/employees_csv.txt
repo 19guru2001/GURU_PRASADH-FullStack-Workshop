@@ -1,0 +1,6 @@
+id,firstName,lastName,department,salary,hireDate
+1,John,Doe,Engineering,75000.00,2020-01-15
+2,Jane,Smith,Marketing,65000.00,2019-06-20
+3,Bob,Johnson,Engineering,82000.00,2018-03-10
+4,Alice,Williams,HR,58000.00,2021-09-01
+5,Charlie,Brown,Marketing,70000.00,2020-11-30
